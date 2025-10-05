@@ -1,0 +1,133 @@
+# SpokyAI Configuration File
+
+# System Settings
+system:
+  # Resource limits
+  max_cpu_percent: 80
+  max_ram_mb: 2048
+  max_threads: 4
+  
+  # Logging
+  log_level: INFO
+  log_file: logs/spokyai.log
+  log_rotation: daily
+  log_retention_days: 30
+
+# Voice Recognition Settings
+voice:
+  enabled: true
+  model_path: models/vosk-model
+  sample_rate: 16000
+  buffer_size: 4000
+  language: en-US
+  
+  # Voice activation
+  activation_phrase: "hey spoky"
+  activation_timeout: 5
+  
+  # Audio settings
+  microphone_index: null  # null = default microphone
+  audio_format: paInt16
+  channels: 1
+
+# AI Settings
+ai:
+  # Model paths
+  sentiment_model: models/sentiment-analysis
+  nlp_model: models/spacy-en
+  
+  # Processing
+  batch_size: 32
+  max_sequence_length: 512
+  confidence_threshold: 0.7
+
+# Automation Settings
+automation:
+  enabled: true
+  screenshot_interval: 60  # seconds
+  action_delay: 0.1  # seconds between actions
+  
+  # Safety limits
+  max_actions_per_minute: 100
+  require_confirmation: true
+  
+  # Recording
+  record_actions: true
+  recording_path: recordings/
+
+# Database Settings
+database:
+  type: sqlite  # Options: sqlite, postgresql, mysql, dynamodb
+  connection_string: sqlite:///spokyai_logs.db
+  
+  # DynamoDB (if using AWS)
+  dynamodb_region: us-east-1
+  dynamodb_user_actions_table: SpokyAI_UserActions
+  dynamodb_system_events_table: SpokyAI_SystemEvents
+  
+  # Connection pool
+  pool_size: 5
+  max_overflow: 10
+
+# AWS Settings
+aws:
+  enabled: false
+  region: us-east-1
+  
+  # Lambda functions
+  lambda_data_storage: spokyai-data-storage
+  lambda_data_processing: spokyai-data-processing
+  lambda_sentiment_analysis: spokyai-sentiment-analysis
+  lambda_rating_evaluation: spokyai-rating-evaluation
+  
+  # S3
+  s3_bucket: spokyai-data
+  s3_prefix: data/
+  
+  # DynamoDB
+  dynamodb_sentiment_table: SentimentResults
+  dynamodb_ratings_table: WebsiteRatings
+
+# Security Settings
+security:
+  # Encryption
+  encrypt_logs: false
+  encryption_key_path: config/keys/encryption.key
+  
+  # Access control
+  require_authentication: false
+  allowed_users: []
+  
+  # Privacy
+  anonymize_data: true
+  data_retention_days: 90
+
+# UI Settings
+ui:
+  theme: dark
+  show_notifications: true
+  minimize_to_tray: true
+  startup_on_boot: false
+
+# Performance Settings
+performance:
+  # Cache
+  enable_cache: true
+  cache_size_mb: 512
+  cache_ttl: 3600  # seconds
+  
+  # Optimization
+  use_gpu: false
+  gpu_device: 0
+  num_workers: 2
+  
+  # Memory
+  gc_interval: 300  # seconds
+  max_memory_mb: 4096
+
+# Development Settings
+development:
+  debug_mode: false
+  verbose_logging: false
+  enable_profiling: false
+  mock_services: false
