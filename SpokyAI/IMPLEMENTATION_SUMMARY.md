@@ -102,30 +102,16 @@ Created GitHub Actions workflow (`.github/workflows/spokyai-ci.yml`) with:
 - Syntax validation for all Lambda functions
 - Logging verification
 
-### 4. AWS Lambda Updates ✅
+## Archived Components
 
-#### Moved Lambda Functions
-All AWS Lambda Python files moved to `lambda/` folder:
-- `data_storage.py` - Fetches and stores data in S3
-- `data_processing.py` - Preprocesses text with NLTK
-- `sentiment_analysis.py` - Analyzes sentiment with transformers
-- `rating_evaluation.py` - Calculates website ratings
+AWS Lambda functions and opinion mining system files have been moved to the `archived/` directory as they are not part of the core SpokyAI agent functionality. The agent focuses on:
+- Learning user behavior through logs
+- Monitoring keyboard and mouse actions  
+- Responding to speech requests
+- Developing a mindset based on gathered data
+- Interacting with the Windows interface
 
-#### Enhanced with Logging
-Each Lambda function now includes:
-- Structured logging with Python logging module
-- Log level configuration
-- Execution start/end logging
-- Error logging with stack traces
-- Performance metrics logging
-- Detailed event logging
-
-Example logging additions:
-```python
-logger.info(f"Lambda function invoked with event: {json.dumps(event)}")
-logger.info(f"Processing {len(items)} items")
-logger.error(f"Error in lambda execution: {str(e)}", exc_info=True)
-```
+See `archived/README.md` for details on archived components.
 
 ### 5. Database Logging ✅
 
